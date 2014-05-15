@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Pins for <%= @board.name %>:</h3><br>
+
+<p>
+  <strong>Name:</strong>
+  <%= @board.name %>
+</p>
+
+<p>
+  <strong>About:</strong>
+  <%= @board.about %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @board.user_id %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Board</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pins.each do |pin| %>
+      <tr>
+        <td><%= pin.name %></td>
+        <td><%= pin.board_id %></td>
+        <td><%= link_to 'Show', pin %></td>
+        <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
+        <td><%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_board_path(@board) %> |
+<%= link_to 'Back', boards_path %>
